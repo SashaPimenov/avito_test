@@ -1,0 +1,22 @@
+.boardPage {
+  padding: 24px 48px;
+  flex: 1;
+}
+.boardHeader {
+  margin-bottom: 24px;
+}
+
+.boardTitle {
+  margin-bottom: 8px !important;
+}
+
+.loading,
+.error {
+  padding: 24px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.error {
+  color: #f5222d;
+}

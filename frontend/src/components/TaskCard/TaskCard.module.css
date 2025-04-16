@@ -1,0 +1,33 @@
+.issueWrapper {
+  margin-bottom: 16px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.issueWrapper:active {
+  cursor: grabbing;
+}
+
+.issueCard {
+  transition: box-shadow 0.3s;
+}
+
+.issueCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.issueTitle {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.issuePriority {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.issueAssignee {
+  font-size: 14px;
+}

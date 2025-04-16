@@ -1,0 +1,10 @@
+.container {
+  padding: 24px;
+  flex: 1;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

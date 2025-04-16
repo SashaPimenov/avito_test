@@ -1,0 +1,11 @@
+import { useQuery } from '@tanstack/react-query';
+import { UsersService } from '../../../api/services/userService';
+import { User } from '../../../api/types/user.type';
+
+export const useAllUsers = () => {
+  return useQuery<User[]>({
+    queryKey: ['users'],
+    queryFn: () => UsersService.getUsers(),
+    enabled: true,
+  });
+};

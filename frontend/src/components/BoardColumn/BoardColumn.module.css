@@ -1,0 +1,32 @@
+.boardColumn {
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+  padding: 16px;
+  flex: 1;
+  border-radius: 8px;
+}
+
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.columnTitle {
+  margin-bottom: 16px !important;
+}
+
+@media (max-width: 992px) {
+  .boardColumn {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .boardColumn {
+    margin-bottom: 16px;
+    min-height: auto;
+  }
+}
