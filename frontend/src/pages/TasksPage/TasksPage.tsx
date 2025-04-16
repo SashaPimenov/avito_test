@@ -1,15 +1,15 @@
 import { Button, Table, Typography } from 'antd';
-import { useTableColumns } from '../../hooks/useTableColumns';
-import { TaskForm } from '../../components/TaskForm/TaskForm';
 import { useState } from 'react';
-import { FiltersProvider, useFilters } from '../../contexts/FiltersContext/FiltersContext';
-import { TaskFilters } from '../../components/TaskFilters/TaskFilters';
-import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
-import { LoadingComponent } from '../../components/LoadingComponent/LoadingComponent';
-import styles from './TasksPage.module.css';
-import { useAllTasks } from '../../hooks/api/tasks';
 import { useQueryClient } from '@tanstack/react-query';
 import { PlusOutlined } from '@ant-design/icons';
+import { ErrorComponent } from '@components/ErrorComponent';
+import { LoadingComponent } from '@components/LoadingComponent';
+import { TaskFilters } from '@components/TaskFilters';
+import { TaskForm } from '@components/TaskForm';
+import { useTableColumns } from '@hooks/useTableColumns';
+import { useAllTasks } from '@hooks/api/tasks';
+import { FiltersProvider, useFilters } from '@contexts/FiltersContext';
+import styles from './TasksPage.module.css';
 
 const TasksPageContent = () => {
   const [selectedIssueId, setSelectedIssueId] = useState<number>();

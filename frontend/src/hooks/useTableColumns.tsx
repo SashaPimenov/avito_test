@@ -1,5 +1,5 @@
 import { Button, Tag } from 'antd';
-import { STATUSES_COLORS, PRIORITY_COLORS } from '../const';
+import { STATUSES_COLORS, PRIORITY_COLORS } from '../constants';
 import { Assignee, Task } from '../api/types/task.type';
 
 export const useTableColumns = (onRowClick: (id: number) => void) => {

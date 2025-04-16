@@ -1,15 +1,17 @@
 import { Board } from '@api/types/board.type';
 import { Task } from '@api/types/task.type';
 import { User } from '@api/types/user.type';
-import { FormInputs } from '@components/FormInputs/FormInputs';
-import { ROUTES } from '@const/routes';
+import { FormInputs } from '@components/FormInputs';
+import { ROUTES } from 'src/constants/routes';
 import { Button, Form } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import styles from './FormFields.module.css'
+import styles from './FormFields.module.css';
+import { TaskFormValues } from '@components/TaskForm/types';
+import { Control, FieldErrors } from 'react-hook-form';
 
 interface FormFieldsProps {
-  control: any;
-  errors: any;
+  control: Control<TaskFormValues>;
+  errors: FieldErrors<TaskFormValues>;
   users?: User[];
   task?: Task;
   source: string;
@@ -59,7 +61,12 @@ export const FormFields = ({
         <Button onClick={onCancel} disabled={isLoading} className={styles.buttonElement}>
           Отменить
         </Button>
-        <Button type="primary" onClick={onSubmit} loading={isLoading} className={styles.buttonElement}>
+        <Button
+          type="primary"
+          onClick={onSubmit}
+          loading={isLoading}
+          className={styles.buttonElement}
+        >
           {isEditMode ? 'Изменить' : 'Создать'}
         </Button>
       </Form.Item>

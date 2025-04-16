@@ -1,16 +1,16 @@
 import { Board } from '@api/types/board.type';
 import { User } from '@api/types/user.type';
-import { CreateIssueFormValues } from '@components/TaskForm/types';
+import { CreateIssueFormValues, TaskFormValues } from '@components/TaskForm/types';
 import { Form, Input, Select } from 'antd';
-import { Controller, Control } from 'react-hook-form';
+import { Controller, Control, FieldErrors } from 'react-hook-form';
 import styles from './FormInputs.module.css';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 interface FormInputsProps {
-  control: any;
-  errors: any;
+  control: Control<TaskFormValues>;
+  errors: FieldErrors<TaskFormValues>;
   users?: User[];
   boards?: Board[];
   boardId?: number;

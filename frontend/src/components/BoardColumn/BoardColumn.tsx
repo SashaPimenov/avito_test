@@ -1,6 +1,6 @@
 import { Task } from '@api/types/task.type';
-import { TaskCard } from '@components/TaskCard/TaskCard';
-import { STATUSES_COLORS } from '@const/statusesColors';
+import { TaskCard } from '@components/TaskCard';
+import { STATUSES_COLORS } from 'src/constants/statusesColors';
 import { Status } from 'src/types';
 import styles from './BoardColumn.module.css';
 import { Typography } from 'antd';

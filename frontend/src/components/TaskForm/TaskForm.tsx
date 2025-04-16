@@ -1,6 +1,6 @@
-import { CreateTaskForm } from '@components/CreateTaskForm/CreateTaskForm';
-import { LoadingComponent } from '@components/LoadingComponent/LoadingComponent';
-import { UpdateTaskForm } from '@components/UpdateTaskForm/UpdateTaskForm';
+import { CreateTaskForm } from '@components/CreateTaskForm';
+import { LoadingComponent } from '@components/LoadingComponent';
+import { UpdateTaskForm } from '@components/UpdateTaskForm';
 import { useAllBoards } from '@hooks/api/boards';
 import { useTaskById, useCreateTask, useUpdateTask } from '@hooks/api/tasks';
 import { useAllUsers } from '@hooks/api/users';
@@ -9,7 +9,7 @@ import { TaskFormProps, CreateIssueFormValues, UpdateIssueFormValues } from './t
 
 export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }: TaskFormProps) => {
   const { data: users, isPending: usersPending } = useAllUsers();
-  const { data: currentTask, isPending: taskPending } = useTaskById(issueId);
+  const { data: currentTask, isPending: taskPending } = useTaskById(issueId!);
   const { data: boards, isPending: boardsPending } = useAllBoards();
 
   const { mutate: createTaskMutation, isPending: createTaskPending } = useCreateTask();

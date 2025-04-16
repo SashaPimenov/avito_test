@@ -1,14 +1,13 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { BoardColumns } from '../../components/BoardColumns/BoardColumns';
-import { LoadingComponent } from '../../components/LoadingComponent/LoadingComponent';
-import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
-import Title from 'antd/es/typography/Title';
+import { BoardColumns } from '../../components/BoardColumns';
+import { LoadingComponent } from '../../components/LoadingComponent';
+import { ErrorComponent } from '../../components/ErrorComponent';
 import { Task } from '../../api/types/task.type';
 import { useBoardById } from '../../hooks/api/boards';
-import { TaskForm } from '@components/TaskForm/TaskForm';
+import { TaskForm } from '@components/TaskForm';
 import { useQueryClient } from '@tanstack/react-query';
+import { Typography } from 'antd';
 import styles from './BoardPage.module.css';
 
 const BoardPage = () => {
@@ -21,7 +20,6 @@ const BoardPage = () => {
   const boardId = parseInt(id || '');
   if (isNaN(boardId)) {
     navigate('/not-found');
-    return null;
   }
 
   const { data: boardsTasks, isLoading, isError } = useBoardById(boardId);
@@ -49,7 +47,7 @@ const BoardPage = () => {
     const queryParams = new URLSearchParams(location.search);
     queryParams.delete('taskId');
     queryParams.delete('target');
-    navigate(`${location.pathname}`, { replace: true }); // Обновляем URL
+    navigate(`${location.pathname}`, { replace: true }); // Обновляем URL если перешли со страницы задач
   };
 
   const handleTaskUpdated = () => {
@@ -63,9 +61,9 @@ const BoardPage = () => {
   return (
     <div className={styles.boardPage}>
       <div className={styles.boardHeader}>
-        <Title level={2} className={styles.boardTitle}>
+        <Typography.Title level={2} className={styles.boardTitle}>
           Доска № {id}
-        </Title>
+        </Typography.Title>
       </div>
 
       <BoardColumns tasks={tasks} handleOpenTaskEdit={handleOpenTaskEdit} />
@@ -76,7 +74,7 @@ const BoardPage = () => {
           clearQueryParams();
           setSelectedIssueId(undefined);
         }}
-        onSuccess={handleTaskUpdated} 
+        onSuccess={handleTaskUpdated}
         issueId={selectedIssueId}
       />
     </div>

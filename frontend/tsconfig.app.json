@@ -11,8 +11,9 @@
       "@hooks/*": ["src/hooks/*"],
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
       "@pages/*": ["src/pages/*"],
-      "@const/*": ["src/const/*"],
+      "@const/*": ["src/constants/*"],
       "@styles/*": ["src/styles/*"],
       "@validations/*": ["src/validations/*"]
     },

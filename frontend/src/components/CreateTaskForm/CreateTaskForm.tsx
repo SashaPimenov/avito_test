@@ -1,10 +1,10 @@
 import { Board } from '@api/types/board.type';
 import { User } from '@api/types/user.type';
-import { FormFields } from '@components/FormFields/FormFields';
-import { CreateIssueFormValues } from '@components/TaskForm/types';
+import { FormFields } from '@components/FormFields';
+import { CreateIssueFormValues, TaskFormValues } from '@components/TaskForm/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createTaskSchema } from '@validations/taskFormValidations';
-import { useForm } from 'react-hook-form';
+import { Control, useForm } from 'react-hook-form';
 
 interface CreateTaskFormProps {
   boardId?: number;
@@ -42,7 +42,7 @@ export const CreateTaskForm = ({
 
   return (
     <FormFields
-      control={control}
+      control={control as Control<TaskFormValues>}
       errors={errors}
       users={users}
       source={source}

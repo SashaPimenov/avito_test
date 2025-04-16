@@ -1,7 +1,7 @@
 import { Row } from 'antd';
-import { BoardColumn } from '../BoardColumn/BoardColumn';
+import { BoardColumn } from '../BoardColumn';
 import { Task } from '../../api/types/task.type';
-import { STATUSES_TITLES } from '../../const';
+import { STATUSES_TITLES } from '../../constants';
 import styles from './BoardColumns.module.css';
 
 interface BoardColumnsProps {

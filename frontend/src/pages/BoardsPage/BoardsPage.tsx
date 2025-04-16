@@ -1,13 +1,13 @@
 import { Card, List, Typography, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { TaskForm } from '../../components/TaskForm/TaskForm';
-import { LoadingComponent } from '../../components/LoadingComponent/LoadingComponent';
-import { ErrorComponent } from '../../components/ErrorComponent/ErrorComponent';
-import styles from './BoardsPage.module.css';
+import { TaskForm } from '../../components/TaskForm';
+import { LoadingComponent } from '../../components/LoadingComponent';
+import { ErrorComponent } from '../../components/ErrorComponent';
 import { useAllBoards } from '../../hooks/api/boards';
-import { ROUTES } from '@const/routes';
+import { ROUTES } from 'src/constants/routes';
 import { useQueryClient } from '@tanstack/react-query';
+import styles from './BoardsPage.module.css';
 
 const BoardsPage = () => {
   const [formOpen, setFormOpen] = useState(false);

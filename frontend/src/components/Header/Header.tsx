@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { TaskForm } from '@components/TaskForm/TaskForm';
-import { ROUTES } from '@const/routes';
+import { TaskForm } from '@components/TaskForm';
+import { ROUTES } from 'src/constants/routes';
 import { Layout, Typography, Menu, Button } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';

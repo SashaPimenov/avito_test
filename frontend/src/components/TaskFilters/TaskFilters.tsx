@@ -2,7 +2,7 @@ import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
 import { useAllBoards } from '@hooks/api/boards';
 import { useAllUsers } from '@hooks/api/users';
 import { Space, Input, Select, Button } from 'antd';
-import { useFilters } from 'src/contexts/FiltersContext/FiltersContext';
+import { useFilters } from '@contexts/FiltersContext';
 import styles from './TaskFilters.module.css';
 
 export const TaskFilters = () => {
