@@ -1,4 +1,4 @@
-import { Task } from '@api/types/task.type';
+import { Task } from '@api/types/task.DTO';
 import { TaskCard } from '@components/TaskCard';
 import { STATUSES_COLORS } from 'src/constants/statusesColors';
 import { Status } from 'src/types';

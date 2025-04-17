@@ -1,6 +1,4 @@
-import { Board } from '@api/types/board.type';
-import { Task } from '@api/types/task.type';
-import { User } from '@api/types/user.type';
+import { Board } from '@api/types/board.DTO';
 import { FormInputs } from '@components/FormInputs';
 import { ROUTES } from 'src/constants/routes';
 import { Button, Form } from 'antd';
@@ -9,6 +7,8 @@ import styles from './FormFields.module.css';
 import { TaskFormValues } from '@components/TaskForm/types';
 import { Control, FieldErrors } from 'react-hook-form';
 import { FORM_SOURCE } from '@constants/formSource';
+import { Task } from '@api/types/task.DTO';
+import { User } from '@api/types/user.DTO';
 
 interface FormFieldsProps {
   control: Control<TaskFormValues>;

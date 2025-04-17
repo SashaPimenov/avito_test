@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { Task } from '../../api/types/task.type';
+import { Task } from '../../api/types/task.DTO';
 import { FiltersContextType, FiltersState } from './types';
 
 const FiltersContext = createContext<FiltersContextType | undefined>(undefined);

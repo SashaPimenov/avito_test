@@ -1,6 +1,6 @@
 import { Button, Tag } from 'antd';
 import { STATUSES_COLORS, PRIORITY_COLORS } from '../constants';
-import { Assignee, Task } from '../api/types/task.type';
+import { Assignee, Task } from '../api/types/task.DTO';
 
 /**
  * Хук для получения столбцов задачи

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { BoardColumns } from '../../components/BoardColumns';
 import { LoadingComponent } from '../../components/LoadingComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
-import { Task } from '../../api/types/task.type';
+import { Task } from '../../api/types/task.DTO';
 import { useBoardById } from '../../hooks/api/boards';
 import { TaskForm } from '@components/TaskForm';
 import { useQueryClient } from '@tanstack/react-query';

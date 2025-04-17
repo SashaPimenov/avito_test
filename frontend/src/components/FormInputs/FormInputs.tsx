@@ -1,5 +1,5 @@
-import { Board } from '@api/types/board.type';
-import { User } from '@api/types/user.type';
+import { Board } from '@api/types/board.DTO';
+import { User } from '@api/types/user.DTO';
 import { CreateIssueFormValues, TaskFormValues } from '@components/TaskForm/types';
 import { Form, Input, Select } from 'antd';
 import { Controller, Control, FieldErrors } from 'react-hook-form';

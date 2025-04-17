@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { BoardService } from '../../../api/services/boardService';
-import { Task } from '../../../api/types/task.type';
+import { Task } from '../../../api/types/task.DTO';
 
 export const useBoardById = (id: number, options = {}) => {
   return useQuery<Task[]>({

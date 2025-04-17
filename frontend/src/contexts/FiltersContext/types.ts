@@ -1,4 +1,4 @@
-import { Task } from '../../api/types/task.type';
+import { Task } from '../../api/types/task.DTO';
 
 export interface FiltersState {
   searchTerm: string;

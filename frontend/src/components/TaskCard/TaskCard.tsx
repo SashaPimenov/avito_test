@@ -1,4 +1,4 @@
-import { Task } from '@api/types/task.type';
+import { Task } from '@api/types/task.DTO';
 import { Card, Typography } from 'antd';
 import styles from './TaskCard.module.css';
 import { draggable } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';

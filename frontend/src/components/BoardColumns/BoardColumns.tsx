@@ -1,6 +1,6 @@
 import { Row } from 'antd';
 import { BoardColumn } from '../BoardColumn';
-import { Task } from '../../api/types/task.type';
+import { Task } from '../../api/types/task.DTO';
 import { STATUSES_TITLES } from '../../constants';
 import styles from './BoardColumns.module.css';
 import { Status } from 'src/types';

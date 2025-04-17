@@ -1,5 +1,5 @@
-import { Board } from '@api/types/board.type';
-import { User } from '@api/types/user.type';
+import { Board } from '@api/types/board.DTO';
+import { User } from '@api/types/user.DTO';
 import { FormFields } from '@components/FormFields';
 import { CreateIssueFormValues, TaskFormValues } from '@components/TaskForm/types';
 import { yupResolver } from '@hookform/resolvers/yup';

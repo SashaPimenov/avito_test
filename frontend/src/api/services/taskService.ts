@@ -1,6 +1,6 @@
 import { ApiService } from '../apiService';
 import { CreateTaskDTO } from '../types/create-task.DTO';
-import { Task } from '../types/task.type';
+import { Task } from '../types/task.DTO';
 import { UpdateTaskDTO } from '../types/update-task.DTO';
 
 export const TaskService = {
