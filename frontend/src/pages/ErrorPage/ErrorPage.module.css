@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.errorCard {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+.content {
+  text-align: center;
+  padding: 40px;
+}
+
+.errorAlert {
+  margin-bottom: 32px;
+  border-radius: 8px;
+  border: 1px solid #ffccc7;
+}
+
+.errorIcon {
+  font-size: 64px;
+  color: #ff4d4f;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}

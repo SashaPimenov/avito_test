@@ -1,38 +1,43 @@
-.issueWrapper {
+.taskWrapper {
   margin-bottom: 16px;
-  cursor: grab;
   touch-action: none;
+  cursor: grab;
 }
 
-.issueWrapper:active {
+.taskWrapper:active {
   cursor: grabbing;
 }
 
-
-.issueWrapper[data-dragging] {
-  opacity: 0.5;
+.taskCard {
+  transition: box-shadow 0.3s, opacity 0.2s;
 }
 
-.issueCard {
-  transition: box-shadow 0.3s;
-}
-
-.issueCard:hover {
+.taskCard:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.issueTitle {
+.taskTitle {
   margin-bottom: 8px;
   font-size: 16px;
   font-weight: 500;
 }
 
-.issuePriority {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 4px;
+.assigneeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
 }
 
-.issueAssignee {
+.assigneeLabel {
+  font-size: 14px;
+  color: #666;
+}
+
+.assigneeAvatar {
+  color: white;
+}
+
+.assigneeName {
   font-size: 14px;
 }

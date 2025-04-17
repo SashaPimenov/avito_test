@@ -10,19 +10,19 @@ export type TaskFormValues = {
   boardId?: number; // Опционально, так как есть только при создании
 };
 
-export interface UpdateIssueFormValues extends Omit<TaskFormValues, 'boardId'> {
+export interface UpdateTaskFormValues extends Omit<TaskFormValues, 'boardId'> {
   status: Status; // Делаем обязательным
 }
 
-export interface CreateIssueFormValues extends Omit<TaskFormValues, 'status'> {
+export interface CreateTaskFormValues extends Omit<TaskFormValues, 'status'> {
   boardId: number; // Делаем обязательным
 }
 
-export interface TaskFormProps {
+export interface TaskModalProps {
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;
   source: string;
-  issueId?: number;
+  taskId?: number;
   boardId?: number;
 }

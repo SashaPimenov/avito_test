@@ -1,5 +1,5 @@
 export const STATUSES_COLORS = {
-  Backlog: 'gold',
-  InProgress: 'geekblue',
-  Done: 'green',
+  Backlog: '#FFC53D',
+  InProgress: '#1890FF',
+  Done: '#52C41A',
 };

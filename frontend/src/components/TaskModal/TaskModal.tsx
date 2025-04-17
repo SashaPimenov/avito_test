@@ -5,26 +5,33 @@ import { useAllBoards } from '@hooks/api/boards';
 import { useTaskById, useCreateTask, useUpdateTask } from '@hooks/api/tasks';
 import { useAllUsers } from '@hooks/api/users';
 import { message, Modal } from 'antd';
-import { TaskFormProps, CreateIssueFormValues, UpdateIssueFormValues } from './types';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
+import { CreateTaskFormValues, TaskModalProps, UpdateTaskFormValues } from './types';
 
 /**
  * Компонент-контейнер, который отображает
  * форму создания или редактирования в зависимости от входных данных
  */
-export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }: TaskFormProps) => {
+export const TaskModal = ({
+  open,
+  onClose,
+  taskId,
+  onSuccess,
+  source,
+  boardId,
+}: TaskModalProps) => {
   const { data: users, isPending: usersPending } = useAllUsers({ enabled: open });
-  const { data: currentTask, isPending: taskPending } = useTaskById(issueId!);
+  const { data: currentTask, isPending: taskPending } = useTaskById(taskId!);
   const { data: boards, isPending: boardsPending } = useAllBoards({ enabled: open });
   const navigate = useNavigate();
   const { mutate: createTaskMutation, isPending: createTaskPending } = useCreateTask();
   const { mutate: updateTaskMutation, isPending: updateTaskPending } = useUpdateTask();
   const [messageApi, contextHolder] = message.useMessage();
 
-  const isLoading = usersPending || boardsPending || Boolean(issueId && taskPending);
+  const isLoading = usersPending || boardsPending || Boolean(taskId && taskPending);
 
-  const handleCreate = async (data: CreateIssueFormValues) => {
+  const handleCreate = async (data: CreateTaskFormValues) => {
     try {
       createTaskMutation({
         task: {
@@ -44,10 +51,10 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
     }
   };
 
-  const handleUpdate = async (data: UpdateIssueFormValues) => {
+  const handleUpdate = async (data: UpdateTaskFormValues) => {
     try {
       updateTaskMutation({
-        taskId: issueId!,
+        taskId: taskId!,
         task: data,
       });
       onSuccess?.();
@@ -63,14 +70,14 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
       onCancel={onClose}
       footer={null}
       width={700}
-      title={issueId ? 'Изменить задачу' : 'Создать задачу'}
+      title={taskId ? 'Изменить задачу' : 'Создать задачу'}
     >
       {contextHolder}
       {isLoading ? (
         <LoadingComponent />
-      ) : issueId && currentTask ? (
+      ) : taskId && currentTask ? (
         <UpdateTaskForm
-          key={`update-form-${issueId}`}
+          key={`update-form-${taskId}`}
           task={currentTask}
           users={users}
           source={source}

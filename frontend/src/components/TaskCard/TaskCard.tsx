@@ -1,19 +1,16 @@
 import { Task } from '@api/types/task.DTO';
-import { Card, Typography } from 'antd';
+import { Card, Tag, Typography, Avatar } from 'antd';
 import styles from './TaskCard.module.css';
 import { draggable } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 import { useRef, useEffect } from 'react';
+import { PRIORITY_COLORS } from '@constants/priorityColors';
+import { Priority } from 'src/types';
 
 interface TaskCardProps {
   task: Task;
   handleOpenTaskEdit: (id: number) => void;
 }
 
-/**
- * Компонент для отображения задачи
- * @param task Задача
- * @param handleOpenTaskEdit Колбэк для редактирования задачи
- */
 export const TaskCard = ({ task, handleOpenTaskEdit }: TaskCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,18 +30,27 @@ export const TaskCard = ({ task, handleOpenTaskEdit }: TaskCardProps) => {
       },
       onDrop: () => {
         element.style.opacity = '1';
-        element.style.cursor = 'grab';
+        element.style.cursor = '';
       },
     });
   }, [task.id, task.status]);
+
   return (
-    <div ref={ref} className={styles.issueWrapper} onClick={() => handleOpenTaskEdit(task.id)}>
-      <Card className={styles.issueCard}>
-        <Typography.Title level={5} className={styles.issueTitle}>
+    <div ref={ref} className={styles.taskWrapper} onClick={() => handleOpenTaskEdit(task.id)}>
+      <Card className={styles.taskCard}>
+        <Typography.Title level={5} className={styles.taskTitle}>
           {task.title}
         </Typography.Title>
-        <p className={styles.issuePriority}>Приоритет: {task.priority}</p>
-        <p className={styles.issueAssignee}>Ответственный: {task.assignee.fullName}</p>
+        <p>
+          Приоритет: <Tag color={PRIORITY_COLORS[task.priority as Priority]}>{task.priority}</Tag>
+        </p>
+        <div className={styles.assigneeContainer}>
+          <span className={styles.assigneeLabel}>Ответственный:</span>
+          <Avatar size="small" className={styles.assigneeAvatar}>
+            {task.assignee.fullName.charAt(0)}
+          </Avatar>
+          <span className={styles.assigneeName}>{task.assignee.fullName}</span>
+        </div>
       </Card>
     </div>
   );

@@ -4,7 +4,7 @@ import { ROUTES } from 'src/constants/routes';
 import { Button, Form } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import styles from './FormFields.module.css';
-import { TaskFormValues } from '@components/TaskForm/types';
+import { TaskFormValues } from '@components/TaskModal/types';
 import { Control, FieldErrors } from 'react-hook-form';
 import { FORM_SOURCE } from '@constants/formSource';
 import { Task } from '@api/types/task.DTO';

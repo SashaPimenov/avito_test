@@ -12,6 +12,7 @@
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@contexts/*": ["src/contexts/*"],
+      "@utils/*": ["src/utils/*"],
       "@pages/*": ["src/pages/*"],
       "@constants/*": ["src/constants/*"],
       "@validations/*": ["src/validations/*"]

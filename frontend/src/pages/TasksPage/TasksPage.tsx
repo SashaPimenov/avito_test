@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { ErrorComponent } from '@components/ErrorComponent';
 import { LoadingComponent } from '@components/LoadingComponent';
 import { TaskFilters } from '@components/TaskFilters';
-import { TaskForm } from '@components/TaskForm';
+import { TaskModal } from '@components/TaskModal';
 import { useTableColumns } from '@hooks/useTableColumns';
 import { useAllTasks } from '@hooks/api/tasks';
 import { FiltersProvider, useFilters } from '@contexts/FiltersContext';
@@ -13,13 +13,13 @@ import styles from './TasksPage.module.css';
 import { FORM_SOURCE } from '@constants/formSource';
 
 const TasksPageContent = () => {
-  const [selectedIssueId, setSelectedIssueId] = useState<number>();
+  const [selectedTaskId, setSelectedTaskId] = useState<number>();
   const [formOpen, setFormOpen] = useState(false);
 
   const { filteredTasks } = useFilters();
   const queryClient = useQueryClient();
 
-  const columns = useTableColumns((id) => setSelectedIssueId(id));
+  const columns = useTableColumns((id) => setSelectedTaskId(id));
 
   const handleTaskUpdated = () => {
     // Инвалидируем кеш для этого запроса, что вызовет автоматический рефетч при создании
@@ -36,15 +36,15 @@ const TasksPageContent = () => {
         </Button>
       </div>
       <Table columns={columns} dataSource={filteredTasks} rowKey="id" bordered />
-      <TaskForm
-        open={!!selectedIssueId || formOpen}
+      <TaskModal
+        open={!!selectedTaskId || formOpen}
         source={FORM_SOURCE.TASKS}
         onSuccess={handleTaskUpdated}
         onClose={() => {
-          setSelectedIssueId(undefined);
+          setSelectedTaskId(undefined);
           setFormOpen(false);
         }}
-        issueId={selectedIssueId}
+        taskId={selectedTaskId}
       />
     </div>
   );
