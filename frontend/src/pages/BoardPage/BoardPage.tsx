@@ -22,12 +22,15 @@ const BoardPage = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const boardId = parseInt(id || '');
-  if (isNaN(boardId)) {
-    navigate('/not-found');
-  }
 
   const { data: boardsTasks, isLoading, isError } = useBoardById(boardId);
   const { mutate: changeStatusMutate } = useUpdateTaskStatus();
+
+  useEffect(() => {
+    if (isNaN(boardId)) {
+      navigate('/404');
+    }
+  }, []);
 
   useEffect(() => {
     if (boardsTasks) {

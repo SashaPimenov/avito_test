@@ -6,6 +6,8 @@ import { useTaskById, useCreateTask, useUpdateTask } from '@hooks/api/tasks';
 import { useAllUsers } from '@hooks/api/users';
 import { message, Modal } from 'antd';
 import { TaskFormProps, CreateIssueFormValues, UpdateIssueFormValues } from './types';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@constants/routes';
 
 /**
  * Компонент-контейнер, который отображает
@@ -15,7 +17,7 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
   const { data: users, isPending: usersPending } = useAllUsers({ enabled: open });
   const { data: currentTask, isPending: taskPending } = useTaskById(issueId!);
   const { data: boards, isPending: boardsPending } = useAllBoards({ enabled: open });
-
+  const navigate = useNavigate();
   const { mutate: createTaskMutation, isPending: createTaskPending } = useCreateTask();
   const { mutate: updateTaskMutation, isPending: updateTaskPending } = useUpdateTask();
   const [messageApi, contextHolder] = message.useMessage();
@@ -35,6 +37,7 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
       });
       onSuccess?.();
       messageApi.success('Задача создана');
+      navigate(`${ROUTES.BOARD}/${data.boardId}`);
       onClose();
     } catch (error) {
       console.error('Ошибка при создании задачи', error);
