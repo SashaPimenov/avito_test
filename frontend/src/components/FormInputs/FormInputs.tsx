@@ -1,6 +1,6 @@
 import { Board } from '@api/types/board.DTO';
 import { User } from '@api/types/user.DTO';
-import { CreateIssueFormValues, TaskFormValues } from '@components/TaskForm/types';
+import { CreateTaskFormValues, TaskFormValues } from '@components/TaskModal/types';
 import { Form, Input, Select } from 'antd';
 import { Controller, Control, FieldErrors } from 'react-hook-form';
 import styles from './FormInputs.module.css';
@@ -99,7 +99,7 @@ export const FormInputs = ({
           render={({ field }) => (
             <Select
               {...field}
-              placeholder="Select assignee"
+              placeholder="Выберите ответственного"
               options={users?.map((user) => ({
                 label: user.fullName,
                 value: user.id,
@@ -122,7 +122,7 @@ export const FormInputs = ({
         >
           <Controller
             name="boardId"
-            control={control as Control<CreateIssueFormValues>}
+            control={control as Control<CreateTaskFormValues>}
             render={({ field }) => (
               <Select {...field} loading={!boards} disabled={!!boardId} className={styles.select}>
                 {boards?.map((board) => (

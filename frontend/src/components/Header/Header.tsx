@@ -1,5 +1,5 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { TaskForm } from '@components/TaskForm';
+import { AppstoreOutlined, PlusOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { TaskModal } from '@components/TaskModal';
 import { Layout, Typography, Menu, Button } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -31,16 +31,25 @@ export const Header = () => {
           theme="dark"
           mode="horizontal"
           className={styles.menuItems}
+          selectedKeys={[]}
           items={[
-            { key: 'boards', label: <Link to={ROUTES.BOARDS}>Все доски</Link> },
-            { key: 'issues', label: <Link to={ROUTES.TASKS}>Все задачи</Link> },
+            {
+              key: 'boards',
+              label: <Link to={ROUTES.BOARDS}>Все доски</Link>,
+              icon: <AppstoreOutlined />,
+            },
+            {
+              key: 'issues',
+              label: <Link to={ROUTES.TASKS}>Все задачи</Link>,
+              icon: <UnorderedListOutlined />,
+            },
           ]}
         />
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setFormOpen(true)}>
           Создать задачу
         </Button>
       </Layout.Header>
-      <TaskForm
+      <TaskModal
         open={formOpen}
         onSuccess={() => null}
         onClose={() => setFormOpen(false)}

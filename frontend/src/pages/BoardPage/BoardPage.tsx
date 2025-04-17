@@ -5,7 +5,7 @@ import { LoadingComponent } from '../../components/LoadingComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { Task } from '../../api/types/task.DTO';
 import { useBoardById } from '../../hooks/api/boards';
-import { TaskForm } from '@components/TaskForm';
+import { TaskModal } from '@components/TaskModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { message, Typography } from 'antd';
 import styles from './BoardPage.module.css';
@@ -17,7 +17,7 @@ const BoardPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [selectedIssueId, setSelectedIssueId] = useState<number>();
+  const [selectedTaskId, setSelectedTaskId] = useState<number>();
   const queryClient = useQueryClient();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -30,7 +30,7 @@ const BoardPage = () => {
     if (isNaN(boardId)) {
       navigate('/404');
     }
-  }, []);
+  }, [boardId, navigate]);
 
   useEffect(() => {
     if (boardsTasks) {
@@ -43,12 +43,12 @@ const BoardPage = () => {
     const taskId = queryParams.get('taskId');
 
     if (taskId) {
-      setSelectedIssueId(Number(taskId));
+      setSelectedTaskId(Number(taskId));
     }
-  }, [location.search]);
+  }, []);
 
   const handleOpenTaskEdit = (id: number) => {
-    setSelectedIssueId(id);
+    setSelectedTaskId(id);
   };
 
   const clearQueryParams = () => {
@@ -95,15 +95,15 @@ const BoardPage = () => {
         handleOpenTaskEdit={handleOpenTaskEdit}
         onTaskMove={handleTaskMove}
       />
-      <TaskForm
-        open={!!selectedIssueId}
+      <TaskModal
+        open={!!selectedTaskId}
         source={FORM_SOURCE.BOARD}
         onClose={() => {
           clearQueryParams();
-          setSelectedIssueId(undefined);
+          setSelectedTaskId(undefined);
         }}
         onSuccess={handleTaskUpdated}
-        issueId={selectedIssueId}
+        taskId={selectedTaskId}
       />
     </div>
   );

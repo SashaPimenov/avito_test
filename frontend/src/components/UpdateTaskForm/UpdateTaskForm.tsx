@@ -2,7 +2,7 @@ import { Board } from '@api/types/board.DTO';
 import { Task } from '@api/types/task.DTO';
 import { User } from '@api/types/user.DTO';
 import { FormFields } from '@components/FormFields';
-import { TaskFormValues, UpdateIssueFormValues } from '@components/TaskForm/types';
+import { TaskFormValues, UpdateTaskFormValues } from '@components/TaskModal/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { updateTaskSchema } from '@validations/taskFormValidations';
 import { Control, useForm } from 'react-hook-form';
@@ -14,7 +14,7 @@ interface UpdateTaskFormProps {
   boards?: Board[];
   users?: User[];
   source: string;
-  onSubmit: (data: UpdateIssueFormValues) => Promise<void>;
+  onSubmit: (data: UpdateTaskFormValues) => Promise<void>;
   onCancel: () => void;
   isLoading: boolean;
 }
@@ -36,8 +36,8 @@ export const UpdateTaskForm = ({
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdateIssueFormValues>({
-    resolver: yupResolver(updateTaskSchema as yup.ObjectSchema<UpdateIssueFormValues>), // Приведение типа
+  } = useForm<UpdateTaskFormValues>({
+    resolver: yupResolver(updateTaskSchema as yup.ObjectSchema<UpdateTaskFormValues>), // Приведение типа
     defaultValues: {
       title: task.title,
       description: task.description,
