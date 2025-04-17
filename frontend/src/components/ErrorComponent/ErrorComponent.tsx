@@ -4,10 +4,14 @@ interface IErrorProps {
   message: string;
 }
 
+/**
+ * Компонент для отображения сообщений об ошибках.
+ * @param message Сообщение об ошибке
+ */
 export const ErrorComponent = ({ message }: IErrorProps) => {
   return (
     <div className={styles.errorContainer}>
-      <p>{message}</p>
+      <p className={styles.errorText}>{message}</p>
     </div>
   );
 };

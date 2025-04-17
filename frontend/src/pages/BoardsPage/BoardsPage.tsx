@@ -8,6 +8,7 @@ import { useAllBoards } from '../../hooks/api/boards';
 import { ROUTES } from 'src/constants/routes';
 import { useQueryClient } from '@tanstack/react-query';
 import styles from './BoardsPage.module.css';
+import { FORM_SOURCE } from '@constants/formSource';
 
 const BoardsPage = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -54,18 +55,16 @@ const BoardsPage = () => {
         )}
       />
 
-      {formOpen && (
-        <TaskForm
-          open={formOpen}
-          onSuccess={handleTaskUpdated}
-          source="boards"
-          onClose={() => {
-            setFormOpen(false);
-            setSelectedBoardId(undefined);
-          }}
-          boardId={selectedBoardId}
-        />
-      )}
+      <TaskForm
+        open={formOpen}
+        onSuccess={handleTaskUpdated}
+        source={FORM_SOURCE.BOARDS}
+        onClose={() => {
+          setFormOpen(false);
+          setSelectedBoardId(undefined);
+        }}
+        boardId={selectedBoardId}
+      />
     </div>
   );
 };

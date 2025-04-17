@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './FormFields.module.css';
 import { TaskFormValues } from '@components/TaskForm/types';
 import { Control, FieldErrors } from 'react-hook-form';
+import { FORM_SOURCE } from '@constants/formSource';
 
 interface FormFieldsProps {
   control: Control<TaskFormValues>;
@@ -23,6 +24,9 @@ interface FormFieldsProps {
   isEditMode: boolean;
 }
 
+/**
+ * Компонент, который создает форму и отображает ее поля + футер
+ */
 export const FormFields = ({
   control,
   errors,
@@ -53,7 +57,7 @@ export const FormFields = ({
       />
 
       <Form.Item>
-        {isEditMode && source === 'tasks' && (
+        {isEditMode && source === FORM_SOURCE.TASKS && (
           <Button onClick={goToBoard} disabled={isLoading} className={styles.buttonElement}>
             Перейти на доску
           </Button>

@@ -1,5 +1,9 @@
 import * as yup from 'yup';
 
+/**
+ * Схемы валидации yup для формы создания и редактирования задач
+ */
+
 export const createTaskSchema = yup.object().shape({
   title: yup.string().required('Title is required'),
   description: yup.string().required('Description is required'),

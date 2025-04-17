@@ -4,17 +4,62 @@ import { STATUSES_COLORS } from 'src/constants/statusesColors';
 import { Status } from 'src/types';
 import styles from './BoardColumn.module.css';
 import { Typography } from 'antd';
+import { useRef, useEffect, useState } from 'react';
+import { dropTargetForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
 
-interface BoardColumnProps {
-  status: string;
+interface IBoardColumnProps {
+  status: Status;
   title: string;
   tasks: Task[];
+  onTaskMove: (taskId: number, newStatus: Status) => void;
   handleOpenTaskEdit: (id: number) => void;
 }
-export const BoardColumn = ({ status, title, tasks, handleOpenTaskEdit }: BoardColumnProps) => {
+
+/**
+ * Компонент колонки доски задач (например, для Kanban-доски).
+ * Отображает заголовок с цветом, соответствующим статусу, и список задач.
+ * @param status Статус колонки (определяет цвет заголовка)
+ * @param title Название колонки
+ * @param tasks Массив задач
+ * @param handleOpenTaskEdit Колбэк для редактирования задачи
+ */
+export const BoardColumn = ({
+  status,
+  title,
+  tasks,
+  onTaskMove,
+  handleOpenTaskEdit,
+}: IBoardColumnProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isDraggedOver, setIsDraggedOver] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    return dropTargetForElements({
+      element,
+      onDragEnter: () => {
+        setIsDraggedOver(true);
+      },
+      onDragLeave: () => {
+        setIsDraggedOver(false);
+      },
+      onDrop: ({ source }) => {
+        setIsDraggedOver(false);
+        const taskId = parseInt(source.data.taskId as string);
+        const sourceStatus = source.data.currentStatus;
+        if (!isNaN(taskId) && sourceStatus !== status) {
+          onTaskMove(taskId, status);
+        }
+      },
+      getData: () => ({ status }),
+    });
+  }, [status, onTaskMove]);
+
   return (
-    <div className={styles.boardColumn}>
-      <Typography.Title level={4} style={{ color: STATUSES_COLORS[status as Status] }}>
+    <div ref={ref} className={`${styles.boardColumn} ${isDraggedOver && styles.draggedOver}`}>
+      <Typography.Title level={4} style={{ color: STATUSES_COLORS[status] }}>
         {title}
       </Typography.Title>
 

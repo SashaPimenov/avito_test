@@ -17,6 +17,9 @@ interface FormInputsProps {
   isEditMode: boolean;
 }
 
+/**
+ * Общий компонент, который отображает все поля формы создания или редактирования
+ */
 export const FormInputs = ({
   control,
   errors,

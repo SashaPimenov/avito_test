@@ -9,6 +9,6 @@ export const TaskService = {
   createTask: (task: CreateTaskDTO) => ApiService.post<{ message: string }>(`/tasks/create`, task),
   updateTask: (taskId: number, task: UpdateTaskDTO) =>
     ApiService.put<{ message: string }>(`/tasks/update/${taskId}`, task),
-  updateTaskStatus: (taskId: string, status: string) =>
+  updateTaskStatus: (taskId: number, status: string) =>
     ApiService.put<Task>(`/tasks/updateStatus/${taskId}`, { status }),
 };

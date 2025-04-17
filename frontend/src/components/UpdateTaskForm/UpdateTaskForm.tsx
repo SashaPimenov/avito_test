@@ -18,7 +18,11 @@ interface UpdateTaskFormProps {
   onCancel: () => void;
   isLoading: boolean;
 }
-
+/**
+ * Форма изменения новой задачи с валидацией.
+ * Интегрируется с react-hook-form и yup для валидации.
+ * Передает управление полями в компонент FormFields для единообразия интерфейса.
+ */
 export const UpdateTaskForm = ({
   task,
   boards,

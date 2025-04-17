@@ -1,11 +1,17 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { TaskForm } from '@components/TaskForm';
-import { ROUTES } from 'src/constants/routes';
 import { Layout, Typography, Menu, Button } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
+import { FORM_SOURCE } from '@constants/formSource';
+import { ROUTES } from '@constants/routes';
 
+/**
+ * Компонент шапки приложения с навигацией и кнопкой создания задачи
+ * @example
+ * <Header />
+ */
 export const Header = () => {
   const [formOpen, setFormOpen] = useState(false);
 
@@ -38,7 +44,7 @@ export const Header = () => {
         open={formOpen}
         onSuccess={() => null}
         onClose={() => setFormOpen(false)}
-        source="header"
+        source={FORM_SOURCE.HEADER}
       />
     </>
   );

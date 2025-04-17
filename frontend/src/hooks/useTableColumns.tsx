@@ -2,6 +2,10 @@ import { Button, Tag } from 'antd';
 import { STATUSES_COLORS, PRIORITY_COLORS } from '../constants';
 import { Assignee, Task } from '../api/types/task.type';
 
+/**
+ * Хук для получения столбцов задачи
+ * @param onRowClick - каллбек для действия при нажатии на описание задачи
+ */
 export const useTableColumns = (onRowClick: (id: number) => void) => {
   const columns = [
     {

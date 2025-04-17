@@ -10,6 +10,7 @@ import { useTableColumns } from '@hooks/useTableColumns';
 import { useAllTasks } from '@hooks/api/tasks';
 import { FiltersProvider, useFilters } from '@contexts/FiltersContext';
 import styles from './TasksPage.module.css';
+import { FORM_SOURCE } from '@constants/formSource';
 
 const TasksPageContent = () => {
   const [selectedIssueId, setSelectedIssueId] = useState<number>();
@@ -34,16 +35,10 @@ const TasksPageContent = () => {
           Создать задачу
         </Button>
       </div>
-      <Table
-        style={{ flex: '1' }}
-        columns={columns}
-        dataSource={filteredTasks}
-        rowKey="id"
-        bordered
-      />
+      <Table columns={columns} dataSource={filteredTasks} rowKey="id" bordered />
       <TaskForm
         open={!!selectedIssueId || formOpen}
-        source="tasks"
+        source={FORM_SOURCE.TASKS}
         onSuccess={handleTaskUpdated}
         onClose={() => {
           setSelectedIssueId(undefined);

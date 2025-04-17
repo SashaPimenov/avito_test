@@ -5,6 +5,9 @@ import { Space, Input, Select, Button } from 'antd';
 import { useFilters } from '@contexts/FiltersContext';
 import styles from './TaskFilters.module.css';
 
+/**
+ * Компонент для работы с фильтрами задач
+ */
 export const TaskFilters = () => {
   const { filters, updateFilter, resetFilters } = useFilters();
   const { data: users, isLoading: userLoading } = useAllUsers();

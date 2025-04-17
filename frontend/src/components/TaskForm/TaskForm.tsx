@@ -7,10 +7,14 @@ import { useAllUsers } from '@hooks/api/users';
 import { message, Modal } from 'antd';
 import { TaskFormProps, CreateIssueFormValues, UpdateIssueFormValues } from './types';
 
+/**
+ * Компонент-контейнер, который отображает
+ * форму создания или редактирования в зависимости от входных данных
+ */
 export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }: TaskFormProps) => {
-  const { data: users, isPending: usersPending } = useAllUsers();
+  const { data: users, isPending: usersPending } = useAllUsers({ enabled: open });
   const { data: currentTask, isPending: taskPending } = useTaskById(issueId!);
-  const { data: boards, isPending: boardsPending } = useAllBoards();
+  const { data: boards, isPending: boardsPending } = useAllBoards({ enabled: open });
 
   const { mutate: createTaskMutation, isPending: createTaskPending } = useCreateTask();
   const { mutate: updateTaskMutation, isPending: updateTaskPending } = useUpdateTask();
@@ -63,6 +67,7 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
         <LoadingComponent />
       ) : issueId && currentTask ? (
         <UpdateTaskForm
+          key={`update-form-${issueId}`}
           task={currentTask}
           users={users}
           source={source}
@@ -73,6 +78,7 @@ export const TaskForm = ({ open, onClose, issueId, onSuccess, source, boardId }:
         />
       ) : (
         <CreateTaskForm
+          key={`create-form-${boardId}`}
           boardId={boardId}
           users={users}
           source={source}

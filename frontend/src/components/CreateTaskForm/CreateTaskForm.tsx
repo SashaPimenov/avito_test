@@ -15,7 +15,11 @@ interface CreateTaskFormProps {
   onCancel: () => void;
   isLoading: boolean;
 }
-
+/**
+ * Форма создания новой задачи с валидацией.
+ * Интегрируется с react-hook-form и yup для валидации.
+ * Передает управление полями в компонент FormFields для единообразия интерфейса.
+ */
 export const CreateTaskForm = ({
   boardId,
   users,

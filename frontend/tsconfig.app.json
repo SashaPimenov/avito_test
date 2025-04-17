@@ -13,8 +13,7 @@
       "@components/*": ["src/components/*"],
       "@contexts/*": ["src/contexts/*"],
       "@pages/*": ["src/pages/*"],
-      "@const/*": ["src/constants/*"],
-      "@styles/*": ["src/styles/*"],
+      "@constants/*": ["src/constants/*"],
       "@validations/*": ["src/validations/*"]
     },
 

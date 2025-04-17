@@ -4,6 +4,9 @@ import { FiltersContextType, FiltersState } from './types';
 
 const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 
+/**
+ * Контекст для хранения отсортированных задач по заданным полям
+ */
 export const FiltersProvider = ({ children, tasks }: { children: ReactNode; tasks?: Task[] }) => {
   const [filters, setFilters] = useState<FiltersState>({
     searchTerm: '',

@@ -9,7 +9,6 @@
 - `constants` - константы
 - `hooks` - хуки, в основном запросы к серверу с помощью React Query
 - `pages` - страницы
-- `styles` - глобальные стили
 - `types` - глобальные типы
 - `validations` - схемы для валидации
 
@@ -20,7 +19,7 @@
 
 - `react-hook-form` + `yup` - Удобное управление состоянием формы + удобная валидация форм через схему с помощью yup
 
-- `@dnd-kit` - замена react-beautiful-dnd – более современная, легковесная и гибкая библиотека для drag-and-drop.
+- `@atlaskit/pragmatic-drag-and-drop` - замена react-beautiful-dnd от atlassian. Для dnd
 
 ## Как запустить
 
