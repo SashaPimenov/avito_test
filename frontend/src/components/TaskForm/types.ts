@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Priority } from '../../types/priority.type';
 import { Status } from '../../types/status.type';
 
@@ -20,7 +19,6 @@ export interface CreateIssueFormValues extends Omit<TaskFormValues, 'status'> {
 }
 
 export interface TaskFormProps {
-  children: ReactNode;
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;

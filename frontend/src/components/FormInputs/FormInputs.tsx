@@ -31,14 +31,14 @@ export const FormInputs = ({
   return (
     <>
       <Form.Item
-        label="Title"
+        label="Заголовок"
         validateStatus={errors.title ? 'error' : ''}
         help={errors.title?.message}
       >
         <Controller name="title" control={control} render={({ field }) => <Input {...field} />} />
       </Form.Item>
       <Form.Item
-        label="Description"
+        label="Описание"
         validateStatus={errors.description ? 'error' : ''}
         help={errors.description?.message}
         className={styles.formItem}
@@ -50,7 +50,7 @@ export const FormInputs = ({
         />
       </Form.Item>
       <Form.Item
-        label="Priority"
+        label="Приоритет"
         validateStatus={errors.priority ? 'error' : ''}
         help={errors.priority?.message}
         className={styles.formItem}
@@ -70,7 +70,7 @@ export const FormInputs = ({
 
       {isEditMode && (
         <Form.Item
-          label="Status"
+          label="Статус"
           validateStatus={errors.status ? 'error' : ''}
           help={errors.status?.message}
         >
@@ -89,7 +89,7 @@ export const FormInputs = ({
       )}
 
       <Form.Item
-        label="Assignee"
+        label="Ответственный"
         validateStatus={errors.assigneeId ? 'error' : ''}
         help={errors.assigneeId?.message}
       >
@@ -115,7 +115,7 @@ export const FormInputs = ({
 
       {!isEditMode && (
         <Form.Item
-          label="Board"
+          label="Доска"
           validateStatus={errors.boardId ? 'error' : ''}
           help={errors.boardId?.message}
           className={styles.formItem}

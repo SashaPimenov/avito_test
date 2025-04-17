@@ -34,3 +34,7 @@
 1. Проверить, что запущен Docker
 2. В корне проекта прописать `docker compose up --build `
 3. Проект будет доступен по ссылке http://localhost:3000/
+
+![Задачи](img/tasks.png)
+
+![Доска](img/board.png)
