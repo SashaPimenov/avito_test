@@ -15,22 +15,13 @@ import { useUpdateTaskStatus } from '@hooks/api/tasks';
 
 const BoardPage = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTaskId, setSelectedTaskId] = useState<number>();
   const queryClient = useQueryClient();
   const [messageApi, contextHolder] = message.useMessage();
-
-  const boardId = parseInt(id || '');
-
-  const { data: boardsTasks, isLoading, isError } = useBoardById(boardId);
+  const navigate = useNavigate();
+  const { data: boardsTasks, isLoading, isError } = useBoardById(parseInt(id!));
   const { mutate: changeStatusMutate } = useUpdateTaskStatus();
-
-  useEffect(() => {
-    if (isNaN(boardId)) {
-      navigate('/404');
-    }
-  }, [boardId, navigate]);
 
   useEffect(() => {
     if (boardsTasks) {
@@ -60,7 +51,7 @@ const BoardPage = () => {
 
   const handleTaskUpdated = () => {
     // Инвалидируем кеш для этого запроса, что вызовет автоматический рефетч
-    queryClient.invalidateQueries({ queryKey: ['board', boardId] });
+    queryClient.invalidateQueries({ queryKey: ['board', id] });
   };
 
   if (isLoading) return <LoadingComponent />;
@@ -73,8 +64,6 @@ const BoardPage = () => {
       );
       changeStatusMutate({ taskId, status: newStatus });
       messageApi.success('Статус задачи изменен');
-
-      queryClient.invalidateQueries({ queryKey: ['board', boardId] });
     } catch (error) {
       console.log(error);
       setTasks(tasks);

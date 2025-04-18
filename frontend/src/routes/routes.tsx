@@ -1,18 +1,19 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { AppLayout } from './components/Layout/Layout';
+import { AppLayout } from '../components/Layout/Layout';
 import NotFoundPage from '@pages/NotFoundPage/NotFoundPage';
 import { ErrorPage } from '@pages/ErrorPage/ErrorPage';
+import ProtectedIdRoute from './guards/ProtectedIdRoute';
 
-const BoardsPage = lazy(() => import('./pages/BoardsPage/BoardsPage'));
-const BoardPage = lazy(() => import('./pages/BoardPage/BoardPage'));
-const TasksPage = lazy(() => import('./pages/TasksPage/TasksPage'));
+const BoardsPage = lazy(() => import('../pages/BoardsPage/BoardsPage'));
+const BoardPage = lazy(() => import('../pages/BoardPage/BoardPage'));
+const TasksPage = lazy(() => import('../pages/TasksPage/TasksPage'));
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    errorElement: <ErrorPage />, // Специальный компонент-обертка
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -20,7 +21,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'board/:id',
-        element: <BoardPage />,
+        element: <ProtectedIdRoute requireValidId />,
+        children: [
+          {
+            index: true,
+            element: <BoardPage />,
+          }
+        ]
       },
       {
         path: 'issues',

@@ -11,6 +11,12 @@ interface TaskCardProps {
   handleOpenTaskEdit: (id: number) => void;
 }
 
+/**
+ * Компонент отображения одной карточке в колонке
+ * @param task - объект задачи
+ * @param handleOpenTaskEdit - каллбек для редактировани
+ */
+
 export const TaskCard = ({ task, handleOpenTaskEdit }: TaskCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
